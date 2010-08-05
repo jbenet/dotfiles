@@ -50,10 +50,10 @@ alias p='ps -fu $USER'
 alias h='history'
 alias hd='od -Ax -tx1z -v'  # convenient hex dump
 
-alias cp='nocorrect cp'
-alias mv='nocorrect mv'
-alias rm='nocorrect rm -i'
-alias mkdir='nocorrect mkdir'
+# alias cp='nocorrect cp'
+# alias mv='nocorrect mv'
+# alias rm='nocorrect rm -i'
+# alias mkdir='nocorrect mkdir'
 
 # Load modules
 if [[ -d "${HOME}/.zsh" ]] ; then

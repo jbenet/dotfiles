@@ -2,11 +2,11 @@
 setopt prompt_subst
 
 # components
-prompt_user=$'%{\e[01;36m%}%n'
-prompt_host=$'%{\e[33;1m%}%m'
-prompt_path=$'%{\e[32;13m%}%~'
-prompt_git=$'`git-prompt`'
-prompt_indicator=$'%(?.%{\e[33;1m%}.%{\e[01;31m%})%(!.#.)%# %{\e[00m%}'
+prompt_user=$'%b%{\e[33;36m%}%n'
+prompt_host=$'%B%{\e[33;1m%}%m'
+prompt_path=$'%b%{\e[32;13m%}%~'
+prompt_git=$'%b`git-prompt`'
+prompt_indicator=$'%B%(?.%{\e[33;1m%}.%{\e[01;31m%})%(!.#.)%# %{\e[00m%}%b'
 
 # separators
 white=$'%{\e[01;0m%}'

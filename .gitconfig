@@ -1,13 +1,15 @@
 [user]
-  name = Matt Sparks
-  email = ms@quadpoint.org
+  name = jbenet
+  email = jbenet@cs.stanford.edu
 
 [alias]
   ci = commit -a
   co = checkout
-  st = status
+  st = status -a
   lg = log --name-status
+  lol = log --pretty=oneline --abbrev-commit --graph --decorate
   praise = blame
+  unadd = reset HEAD
 
 [apply]
   whitespace = strip
@@ -23,3 +25,9 @@
   diff = true
   interactive = true
   status = true
+  ui = auto
+  whitespace = red reverse
+
+[github]
+  user = jbenet
+  token = 1fb191fb9643c1059fcc0d186c6cf9ae

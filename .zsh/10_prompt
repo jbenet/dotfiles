@@ -1,15 +1,17 @@
 # Set up (Gentoo-style) prompt
 setopt prompt_subst
-if [[ $HOME[0,5] == "/afs/" ]]; then
-  if [[ $EUID == "0" ]]; then
-    PROMPT=$'%{\e[01;31m%}%m %{\e[01;34m%}%~ %(?.%{\e[01;34m%}.%{\e[01;31m%})%(!..)%# %{\e[00m%}'
-  else
-    PROMPT=$'%{\e[01;32m%}%n@%m %{\e[01;34m%}%~ %(?.%{\e[01;34m%}.%{\e[01;31m%})%(!.#.)%# %{\e[00m%}'
-  fi
-else
-  if [[ $EUID == "0" ]]; then
-    PROMPT=$'%{\e[01;31m%}%m %{\e[01;34m%}%~ `git-prompt`%(?.%{\e[01;34m%}.%{\e[01;31m%})%(!..)%# %{\e[00m%}'
-  else
-    PROMPT=$'%{\e[01;32m%}%n@%m %{\e[01;34m%}%~ `git-prompt`%(?.%{\e[01;34m%}.%{\e[01;31m%})%(!.#.)%# %{\e[00m%}'
-  fi
-fi
+
+# components
+prompt_user=$'%{\e[01;36m%}%n'
+prompt_host=$'%{\e[33;1m%}%m'
+prompt_path=$'%{\e[32;13m%}%~'
+prompt_git=$'`git-prompt`%(?.%{\e[01;34m%}.%{\e[01;31m%})%(!.#.)%# %{\e[00m%}'
+
+# separators
+white=$'%{\e[01;0m%}'
+prompt_at="$white@"
+prompt_colon="$white:"
+prompt_star="$white*"
+
+
+PROMPT="$prompt_user $prompt_at $prompt_host $prompt_colon $prompt_path $prompt_star $prompt_git $white"

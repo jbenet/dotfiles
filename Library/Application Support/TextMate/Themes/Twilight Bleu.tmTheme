@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>author</key>
-	<string>Michael Sheets</string>
+	<string>Michael Sheets and Juan Batiz-Benet</string>
 	<key>name</key>
 	<string>Twilight Bleu</string>
 	<key>settings</key>

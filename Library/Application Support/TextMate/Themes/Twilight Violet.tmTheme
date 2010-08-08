@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>author</key>
-	<string>Michael Sheets</string>
+	<string>Juan Batiz-Benet (based on Michael Sheets' Twilight)</string>
 	<key>name</key>
-	<string>Twilight Bleu Exp</string>
+	<string>Twilight Violet</string>
 	<key>settings</key>
 	<array>
 		<dict>

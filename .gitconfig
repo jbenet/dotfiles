@@ -27,7 +27,3 @@
   status = true
   ui = auto
   whitespace = red reverse
-
-[github]
-  user = jbenet
-  token = 1fb191fb9643c1059fcc0d186c6cf9ae

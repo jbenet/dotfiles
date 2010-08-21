@@ -4,6 +4,9 @@
 #
 # Considerable zsh-fu from compnerd, jdong, Mako, and majnematic.
 
+# ZDOTDIR = $HOME if not already set. (some scripts need it.)
+zdotdir=${zdotdir:-$HOME}
+
 # History variables
 HISTSIZE=1000
 HISTFILE=~/.zsh/.history     # history file name

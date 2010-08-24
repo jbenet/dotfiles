@@ -15,10 +15,6 @@ prompt_colon="$white:"
 prompt_star="$white*"
 
 PROMPT="$prompt_user $prompt_at $prompt_host $prompt_colon $prompt_path"
-if [[ $(git-branch-name) > 0 ]] then;
-  PROMPT="$PROMPT $prompt_star $prompt_git $prompt_indicator"
-else
-  PROMPT="$PROMPT $prompt_indicator"
-fi
+PROMPT="$PROMPT$prompt_git $prompt_indicator"
 
 

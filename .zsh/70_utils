@@ -5,5 +5,9 @@ sdu () {
 
 # recursive wc
 function rwc () {
-  wc $1 **/*
+  if [[ $1 == "-v" ]]; then
+    wc $2 **/*
+  else
+    find $1 -type f -exec wc $2 {} \; | awk '{total += $1} END{print total}'
+  fi
 }

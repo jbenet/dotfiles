@@ -2,3 +2,8 @@
 sdu () {
   du -sb $* | sort -rn | perl -ple 's|^(\d+)\s*(.*)$|sprintf qq(%9.2fM  $2),($1/1024/1024)|e' | less
 }
+
+# recursive wc
+function rwc () {
+  find $1 -type f -exec wc $2 {} \; | awk '{total += $1} END{print total}'
+}

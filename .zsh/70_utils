@@ -5,5 +5,5 @@ sdu () {
 
 # recursive wc
 function rwc () {
-  find $1 -type f -exec wc $2 {} \; | awk '{total += $1} END{print total}'
+  wc $1 **/*
 }

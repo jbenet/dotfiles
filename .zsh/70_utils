@@ -11,3 +11,12 @@ function rwc () {
     find $1 -type f -exec wc $2 {} \; | awk '{total += $1} END{print total}'
   fi
 }
+
+# text mate guard
+function mate () {
+  case $1 in
+      '/'|'/System/'|'/Library/'|'/Applications/'|'/Osgiliath/'|'/Users/')
+        echo "mate $@ ? Don't be stupid..."; ;;
+      *) /usr/bin/mate $@ ;;
+  esac
+}

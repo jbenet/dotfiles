@@ -27,3 +27,7 @@
   status = true
   ui = auto
   whitespace = red reverse
+
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master

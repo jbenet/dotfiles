@@ -6,3 +6,7 @@ if which dircolors >&/dev/null; then
     eval `dircolors -b`
   fi
 fi
+
+
+autoload -U zmv
+alias mmv='noglob zmv -W'

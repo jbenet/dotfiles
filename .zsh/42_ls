@@ -8,5 +8,6 @@ if which dircolors >&/dev/null; then
 fi
 
 
+# mv with patterns, ie: mmv old* new*
 autoload -U zmv
 alias mmv='noglob zmv -W'

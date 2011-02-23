@@ -1,5 +1,5 @@
 #!/bin/bash
-rsync -ruv .zsh* .vim* .gitconfig .screenrc .dircolors ~
+rsync -ruv .zsh* .vim* .gitconfig .screenrc .dircolors .bashrc ~
 mkdir -p ~/.vim/backup ~/.vim/temp
 mkdir -p ~/.ssh
 touch ~/.ssh/known_hosts

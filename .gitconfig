@@ -48,5 +48,11 @@
   whitespace = red reverse
 
 [branch "master"]
-	remote = origin
-	merge = refs/heads/master
+  remote = origin
+  merge = refs/heads/master
+
+[branch]
+  autosetuprebase = always
+
+[credential]
+  helper = osxkeychain

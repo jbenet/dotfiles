@@ -28,6 +28,8 @@
   abbr = "!sh -c 'git rev-list --all | grep ^$1 | while read commit; do git --no-pager show $commit; done' -"
 
   ft = merge --ff-only @{upstream}
+  upstream = "!zsh -c 'git branch --set-upstream origin/`git-branch-name`'"
+
 [apply]
   whitespace = strip
 

@@ -1,6 +1,6 @@
 [user]
   name = jbenet
-  email = jbenet@cs.stanford.edu
+  email = juan@benet.ai
 
 [alias]
   ci = commit -a

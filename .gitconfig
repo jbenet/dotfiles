@@ -15,6 +15,19 @@
   ls = log --stat --decorate --no-merges
   lc = log ORIG_HEAD.. --stat --no-merges --decorate
   lu = log ..@{upstream}
+
+  df = diff -M
+  dfs = diff --staged -M
+  diffstat = diff --stat -r -M
+
+  stl = stash list
+  sts = "!sh -c 'git stash show -p stash@{$1}' -"
+
+  who = shortlog -s --no-merges
+  whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+  abbr = "!sh -c 'git rev-list --all | grep ^$1 | while read commit; do git --no-pager show $commit; done' -"
+
+  ft = merge --ff-only @{upstream}
 [apply]
   whitespace = strip
 

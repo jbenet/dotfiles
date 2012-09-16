@@ -6,11 +6,15 @@
   ci = commit -a
   co = checkout
   st = status --short
-  lg = log --name-status
-  lol = log --pretty=oneline --abbrev-commit --graph --decorate
   praise = blame
   unadd = reset HEAD
 
+  lol = log --pretty=oneline --abbrev-commit --graph --decorate
+  lg = log --graph --decorate --abbrev-commit --pretty=format:'%C(bold red)%h%C(reset) %C(bold blue)%an%C(reset) -%C(cyan)%d%C(reset) %s %C(bold cyan)(%cr)'
+  lh = log --graph --decorate --abbrev-commit --pretty=format:'%C(bold red)%h%C(reset) %C(bold blue)%an%C(reset) -%C(cyan)%d%C(reset) %s %C(bold cyan)(%cd)'
+  ls = log --stat --decorate --no-merges
+  lc = log ORIG_HEAD.. --stat --no-merges --decorate
+  lu = log ..@{upstream}
 [apply]
   whitespace = strip
 

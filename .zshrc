@@ -64,3 +64,5 @@ if [[ -d "${HOME}/.zsh" ]] ; then
     source "${HOME}/.zsh/${file}"
   done
 fi
+
+EDITOR=subl

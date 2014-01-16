@@ -30,6 +30,10 @@
   ft = merge --ff-only @{upstream}
   upstream = "!zsh -c 'git branch --set-upstream origin/`git-branch-name`'"
 
+  ignore = "!sh -c 'echo $0 $@ | tr \" \" \"\n\" >> .gitignore'"
+  ignore-local = update-index --assume-unchanged
+  unignore-local = update-index --no-assume-unchanged
+
 [apply]
   whitespace = strip
 

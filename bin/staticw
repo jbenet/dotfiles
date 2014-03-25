@@ -1,5 +1,18 @@
 #!/bin/sh
-TMPF=`echo "$1" | pyhash sha1`
-wget -o /tmp/$TMPF "$1"
-static /tmp/$TMPF "$2"
-rm $TMPF
+
+if [ "$#" -ne 2 ]; then
+  echo "Usage: $0 <url> <filename>" >&2
+  exit 1
+fi
+
+set -e
+
+recho() {
+  echo "-> $@"
+  $@
+}
+
+TMPF=/tmp/`echo "$1" | pyhash sha1`
+recho wget -q -O $TMPF "$1"
+recho static $TMPF "$2"
+recho rm $TMPF

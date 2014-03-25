@@ -1,0 +1,39 @@
+#!/usr/bin/env python2.7
+#
+# Install this in your PATH as `pyhash`.
+# If you want more cryptographic hashing functions, try the PassLib module.
+#
+# Don't use this script for anything security related!
+
+import hashlib
+
+algorithms = dict(
+  md5 = lambda s: hashlib.md5(s).hexdigest(),
+  sha1 = lambda s: hashlib.sha1(s).hexdigest(),
+  sha256 = lambda s: hashlib.sha256(s).hexdigest(),
+)
+
+
+def usage():
+  print 'Usage:', sys.argv[0], '<algorithm> [text to hash]'
+  print 'Available algorithms:'
+  for algo in algorithms:
+    print '\t', algo
+
+
+if __name__ == '__main__':
+
+  import sys
+
+  try:
+    algo = algorithms[sys.argv[1]]
+  except (KeyError, IndexError):
+    usage()
+    sys.exit(1)
+
+  if len(sys.argv) > 2:
+    text = sys.argv[2]
+  else:
+    text = sys.stdin.read()
+
+  print algo(text)

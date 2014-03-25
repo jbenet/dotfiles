@@ -1,0 +1,58 @@
+#!/usr/bin/perl
+# Author: juan benet <juan@benet.ai>
+# License: MIT
+#
+# depends on my pyhash (https://gist.github.com/jbenet/6502583)
+# install that, or change the `hash` subroutine below.
+# (probably should use cpan sha or something)
+#
+# Install: put somewhere in your $PATH
+# and modify the two variables below.
+
+# the aws profile to use with the `aws` cli tool
+my $awsprofile = 'juanbenet';
+
+# the s3 bucket to upload file to
+my $s3bucket = 'jbenet.static';
+
+use File::Basename;
+
+sub run {
+  print "> " . $_[0] . "\n";
+  return `$_[0]`;
+};
+
+sub  trim {
+  my $s = shift;
+  $s =~ s/^\s+|\s+$//g;
+  return $s
+};
+
+sub hash {
+  my $file = shift;
+  my $sha1 = run(qq~cat $file | pyhash sha1~);
+  return substr $sha1, 0, 7;
+};
+
+my $argc = scalar(@ARGV);
+if ($argc == 0) {
+  print "Usage: static <file> [<s3path>]\n";
+  exit(-1);
+};
+
+my $file = $ARGV[0];
+
+unless (-e $file) {
+  print "Error: file not found: $file\n";
+  exit(-1);
+}
+
+my $name = (($argc == 2) ? $ARGV[1] : basename($file));
+my $hash = trim(hash($file));
+my $path = trim($hash . "/" . $name);
+my $url = "http://$s3bucket.s3.amazonaws.com/$path";
+
+run(qq~echo "$url" | pbcopy~);
+run(qq~aws s3 cp --profile $awsprofile "$file" "s3://$s3bucket/$path"~);
+run(qq~afplay /System/Library/Sounds/Ping.aiff~);
+print "\n$url\n";

@@ -1,0 +1,5 @@
+#!/bin/sh
+TMPF=`echo "$1" | pyhash sha1`
+wget -o /tmp/$TMPF "$1"
+static /tmp/$TMPF "$2"
+rm $TMPF

@@ -66,3 +66,9 @@ if [[ -d "${HOME}/.zsh" ]] ; then
 fi
 
 EDITOR=subl
+
+# Go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
+
+export PATH=$PATH:~/git/dotfiles/bin

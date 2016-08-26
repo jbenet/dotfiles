@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+var readline = require('readline')
+
+function usage() {
+  console.log('usage: reduce <js-function> <start-val> <data >reduced')
+  console.log('reduce stream of data, with a js function')
+}
+
+function reduce(rfn, rv) {
+  var r = readline.createInterface({
+    input: process.stdin
+  })
+
+  r.on('line', function(l) {
+    try {
+      rv = rfn(rv, l)
+    } catch (e) {
+      console.error(e)
+      process.exit(1)
+    }
+  })
+
+  r.on('close', function() {
+    process.stdout.write("" + rv)
+    process.stdout.write('\n')
+  })
+}
+
+function main() {
+  if (process.argv.length != 4) {
+    usage()
+    process.exit(0)
+  }
+
+  if (process.argv[2] == '-h' || process.argv[2] == '--help') {
+    usage()
+    process.exit(0)
+  }
+
+  var rfn, rv
+  try {
+    rfn = eval(process.argv[2])
+    rv = eval(process.argv[3])
+  } catch (e) {
+    console.error('error: ', e)
+    console.error('maybe your javascript code is invalid')
+    process.exit(1)
+  }
+
+  reduce(rfn, rv)
+}
+
+main()

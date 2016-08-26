@@ -1,0 +1,31 @@
+#!/bin/sh
+
+die() {
+  echo "error:" $@
+  exit 1
+}
+
+ver="$1"
+goloc="/usr/local"
+dir="$goloc/go-$ver"
+ln="$goloc/go"
+
+if [ "$#" -ne 1 ]; then
+  echo "usage: go-use <go-version>"
+  echo ""
+  echo "go-use selects a different version of go, a very lightweight gvm."
+  echo "It merely symlinks $goloc/go to the right installation."
+  echo "It assumes go installations are at:"
+  echo "\t$goloc/go-<version>"
+  echo "Example:"
+  echo "\t$goloc/go-1.5.3"
+  echo "\t$goloc/go-1.6"
+  exit 0
+fi
+
+test -d "$dir" || die "$dir not found"
+
+rm "$ln" || true
+echo ln -s "$dir" "$ln"
+ln -s "$dir" "$ln"
+echo "using:" $(go version)

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+file=$(mktemp /tmp/bropen_XXXXX)
+cat >"$file"
+open -a /Applications/Google\ Chrome.app "$file"

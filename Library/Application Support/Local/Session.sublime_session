@@ -1,0 +1,547 @@
+{
+	"folder_history":
+	[
+		"/Users/jbenet/git/private-notes",
+		"/Users/jbenet/git/web-transformer-json-toml",
+		"/Users/jbenet/git/libp2p/libp2p",
+		"/Users/jbenet/git/ipfs/2016-Q3-Workshop",
+		"/Users/jbenet/git/ipfs/notes/xtp",
+		"/Users/jbenet/git/protocol/paper-sharing",
+		"/Users/jbenet/git/ipfs/blog/src/3-ipscend",
+		"/Users/jbenet/git/ipfs/notes/exo-transport-notes",
+		"/Users/jbenet/demo/ipld",
+		"/Users/jbenet/demo/sharding",
+		"/Users/jbenet/git/ipfs/blog",
+		"/Users/jbenet/demo/ia",
+		"/Users/jbenet/git/ipfs/js-ipfs-cat",
+		"/Users/jbenet/git/ipfs/libp2p-simple-pubsub",
+		"/Users/jbenet/git/protocol/cube/cube/QmZtH5xt8VPUa3NP3uyBQq6haFBsfSQZeFzXTnYMPWWHSS",
+		"/Users/jbenet/git/ipfs/ipfs-firefox-addon",
+		"/Users/jbenet/Downloads/ext 2",
+		"/Users/jbenet/git/ipfs/protochrome",
+		"/Users/jbenet/Downloads/ext",
+		"/Users/jbenet/git/ipfs/js-ipfs-chrome-ext",
+		"/Users/jbenet/git/protocol/grants/2016-04-15-OTF",
+		"/Users/jbenet/git/ipfs/orbit/node_modules/ipfs-bitswap",
+		"/Users/jbenet/git/ipfs/orbit/node_modules/libp2p-tcp",
+		"/Users/jbenet/git/ipfs/orbit-server",
+		"/Users/jbenet/git/ipfs/specs/ipld",
+		"/Users/jbenet/go/src/github.com/ipfs/go-ipfs",
+		"/Users/jbenet/git/ipfs/blog/drafts/QmaskGy9EjvWBjmaJsdWSgvdTrVoaq4Ja6FS1wLGJf3JhS/ipfs-at-stanford-ee380",
+		"/Users/jbenet/go/src/github.com/jbenet/go-base58/.git",
+		"/Users/jbenet/git/protocol/recruiting/apps/OM-EA-app",
+		"/Users/jbenet/git/ipfs/talks/027/demo",
+		"/Users/jbenet/git/blockstack-ipfs/bnslink",
+		"/Users/jbenet/git/blockstack-ipfs/ipns-resolve-blockstack",
+		"/Users/jbenet/git/go-blockstack",
+		"/Users/jbenet/git/ipfs/js-ipfs-unixfs-engine/node_modules/ipfs-repo",
+		"/Users/jbenet/git/ipfs/js-ipfs-unixfs-engine",
+		"/Users/jbenet/git/compress-pdf",
+		"/Users/jbenet/git/ipfs/jsfs/jsfs-fuse/node_modules/ipfs-api",
+		"/Users/jbenet/git/ipfs/jsfs/jsfs-fuse/node_modules/ipfs-api/src",
+		"/Users/jbenet/git/ipfs/jsfs",
+		"/Users/jbenet/git/protocol/main",
+		"/Users/jbenet/git/protocol/collab-with-andyet",
+		"/Users/jbenet/git/protocol/cube/cube"
+	],
+	"last_version": 3103,
+	"last_window_id": 73,
+	"log_indexing": false,
+	"settings":
+	{
+		"new_window_height": 751.0,
+		"new_window_settings":
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"get",
+						"getElementById"
+					],
+					[
+						"fn",
+						"function"
+					],
+					[
+						"fun",
+						"function"
+					]
+				]
+			},
+			"build_system_choices":
+			[
+			],
+			"build_varint": "",
+			"command_palette":
+			{
+				"height": 87.0,
+				"last_filter": "install",
+				"selected_items":
+				[
+					[
+						"install",
+						"Package Control: Install Package"
+					],
+					[
+						"PAckage",
+						"Preferences: Browse Packages"
+					]
+				],
+				"width": 449.0
+			},
+			"console":
+			{
+				"height": 126.0,
+				"history":
+				[
+					"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/Users/jbenet/demo/ia/links",
+				"/Users/jbenet/demo/ia/newsite/Makefile",
+				"/Users/jbenet/.zshrc",
+				"/Users/jbenet/demo/ia/archives/index.html",
+				"/Users/jbenet/demo/ia/Makefile",
+				"/Users/jbenet/git/dotfiles/bin/static",
+				"/Users/jbenet/.gitconfig",
+				"/Users/jbenet/git/protocol/docs/dwebsummit",
+				"/Users/jbenet/git/dotfiles/.gitconfig",
+				"/Users/jbenet/Documents/Bank/<html>",
+				"/Users/jbenet/git/ipfs/jsfs/jsfs",
+				"/Users/jbenet/git/ipfs/jsfs/jsfs.html",
+				"/Users/jbenet/git/ipfs/jsfs/examples/alert.js",
+				"/Users/jbenet/git/ipfs/jsfs/test.js",
+				"/Users/jbenet/git/ipfs/blog/Makefile",
+				"/Users/jbenet/git/ipfs/blog/.git/COMMIT_EDITMSG",
+				"/Users/jbenet/git/ipfs/foo/index.html",
+				"/Users/jbenet/Documents/Bank/deductions",
+				"/Users/jbenet/git/dotfiles/bin/go-use",
+				"/Users/jbenet/Documents/Bank/2015-deductions.csv",
+				"/Users/jbenet/Documents/Bank/2014-deductions.csv",
+				"/Users/jbenet/talks.md",
+				"/Users/jbenet/.ipfs/config",
+				"/Users/jbenet/Documents/Bank/2015.csv",
+				"/Users/jbenet/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+				"/Users/jbenet/git/954937b915768b8a8d2c/.git/COMMIT_EDITMSG",
+				"/Users/jbenet/git/954937b915768b8a8d2c/.git/config",
+				"/Users/jbenet/git/954937b915768b8a8d2c/.git/rebase-merge/git-rebase-todo",
+				"/Users/jbenet/go/src/github.com/ipfs/fs-repo-migrations/Godeps/_workspace/src/github.com/ipfs/ipfs-update/install.go",
+				"/Users/jbenet/go/src/github.com/jbenet/go-net-resolve-addr/LICENSE",
+				"/Users/jbenet/go/src/github.com/whyrusleeping/go-multistream/.git/COMMIT_EDITMSG",
+				"/Users/jbenet/go/src/github.com/whyrusleeping/go-multistream/LICENSE",
+				"/Users/jbenet/go/src/github.com/whyrusleeping/go-multistream/.git/PULLREQ_EDITMSG",
+				"/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/i386/cpuid.h",
+				"/Users/jbenet/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings"
+			],
+			"find":
+			{
+				"height": 23.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"TODO",
+					"id",
+					"CLERK",
+					"Clerk",
+					"$",
+					"^",
+					"$",
+					"^",
+					"$",
+					"PARIS",
+					"HEIDE",
+					"theme",
+					"Skin",
+					"Theme"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": true,
+				"replace_history":
+				[
+					" >>2014-deductions.csv",
+					"cat 2014.csv | grep ",
+					"\""
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"incremental_find":
+			{
+				"height": 23.0
+			},
+			"input":
+			{
+				"height": 0.0
+			},
+			"menu_visible": true,
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"pinned_build_system": "",
+			"replace":
+			{
+				"height": 42.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+					[
+						"",
+						"fff≤"
+					]
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": true,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 150.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			}
+		},
+		"new_window_width": 1219.0
+	},
+	"windows":
+	[
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"file",
+						"filename"
+					],
+					[
+						"date",
+						"datepre"
+					],
+					[
+						"get",
+						"getElementById"
+					],
+					[
+						"fn",
+						"function"
+					],
+					[
+						"fun",
+						"function"
+					]
+				]
+			},
+			"buffers":
+			[
+			],
+			"build_system": "",
+			"build_system_choices":
+			[
+			],
+			"build_varint": "",
+			"command_palette":
+			{
+				"height": 87.0,
+				"last_filter": "install",
+				"selected_items":
+				[
+					[
+						"install",
+						"Package Control: Install Package"
+					],
+					[
+						"PAckage",
+						"Preferences: Browse Packages"
+					]
+				],
+				"width": 449.0
+			},
+			"console":
+			{
+				"height": 126.0,
+				"history":
+				[
+					"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"expanded_folders":
+			[
+				"/Users/jbenet/git/private-notes",
+				"/Users/jbenet/git/private-notes/2016-08"
+			],
+			"file_history":
+			[
+				"/Users/jbenet/git/private-notes/Makefile",
+				"/Users/jbenet/git/private-notes/organize.py",
+				"/Users/jbenet/git/2016-08-04-pressing-todos.md",
+				"/Users/jbenet/git/private-notes/2016-08-04-saving-links.md",
+				"/Users/jbenet/git/private-notes/2016-07-26-workshop-notes-matrix.md",
+				"/Users/jbenet/git/protocol/talks/2015-10-22-dcg/pitch-text.md",
+				"/Users/jbenet/git/protocol/cube/cube/config.json",
+				"/Users/jbenet/git/protocol/paper-sharing/README.md",
+				"/Users/jbenet/git/protocol/paper-sharing/Makefile",
+				"/Users/jbenet/git/ipfs/pm/random/2016-07-ipfs-workshop-post.md",
+				"/Users/jbenet/git/ipfs/pm/.git/COMMIT_EDITMSG",
+				"/Users/jbenet/git/ipfs/pm/.git/PULLREQ_EDITMSG",
+				"/Users/jbenet/git/protocol/docs/2016-06-15-company-protocols.md",
+				"/Users/jbenet/git/protocol/docs/2016-05-25-andyet-feedback.md",
+				"/Users/jbenet/git/protocol/docs/2016-05-usv-mtg-notes.md",
+				"/Users/jbenet/git/protocol/docs/2016-05-email-to-vint-cerf.md",
+				"/Users/jbenet/git/protocol/docs/2016-06-usv-bethany-notes.md",
+				"/Users/jbenet/git/protocol/docs/2016-05-sprint-update.md",
+				"/Users/jbenet/git/protocol/docs/2016-05-distributed-work-resources.md",
+				"/Users/jbenet/git/protocol/docs/2016-03-richard-notes.md",
+				"/Users/jbenet/git/dotfiles/bin/static",
+				"/Users/jbenet/.gitconfig",
+				"/Users/jbenet/git/protocol/docs/dwebsummit",
+				"/Users/jbenet/git/dotfiles/.gitconfig",
+				"/Users/jbenet/Documents/Bank/<html>",
+				"/Users/jbenet/git/ipfs/jsfs/jsfs",
+				"/Users/jbenet/git/ipfs/jsfs/jsfs.html",
+				"/Users/jbenet/git/ipfs/jsfs/examples/alert.js",
+				"/Users/jbenet/git/ipfs/jsfs/test.js",
+				"/Users/jbenet/git/ipfs/blog/Makefile",
+				"/Users/jbenet/git/ipfs/blog/.git/COMMIT_EDITMSG",
+				"/Users/jbenet/git/ipfs/foo/index.html",
+				"/Users/jbenet/Documents/Bank/deductions",
+				"/Users/jbenet/git/dotfiles/bin/go-use",
+				"/Users/jbenet/Documents/Bank/2015-deductions.csv",
+				"/Users/jbenet/Documents/Bank/2014-deductions.csv",
+				"/Users/jbenet/talks.md",
+				"/Users/jbenet/.ipfs/config",
+				"/Users/jbenet/Documents/Bank/2015.csv",
+				"/Users/jbenet/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+				"/Users/jbenet/git/954937b915768b8a8d2c/.git/COMMIT_EDITMSG",
+				"/Users/jbenet/git/954937b915768b8a8d2c/.git/config",
+				"/Users/jbenet/git/954937b915768b8a8d2c/.git/rebase-merge/git-rebase-todo",
+				"/Users/jbenet/go/src/github.com/ipfs/fs-repo-migrations/Godeps/_workspace/src/github.com/ipfs/ipfs-update/install.go",
+				"/Users/jbenet/go/src/github.com/jbenet/go-net-resolve-addr/LICENSE",
+				"/Users/jbenet/go/src/github.com/whyrusleeping/go-multistream/.git/COMMIT_EDITMSG",
+				"/Users/jbenet/go/src/github.com/whyrusleeping/go-multistream/LICENSE",
+				"/Users/jbenet/go/src/github.com/whyrusleeping/go-multistream/.git/PULLREQ_EDITMSG",
+				"/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/i386/cpuid.h",
+				"/Users/jbenet/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings"
+			],
+			"find":
+			{
+				"height": 35.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"path.",
+					"\n>",
+					"TODO",
+					"id",
+					"CLERK",
+					"Clerk",
+					"$",
+					"^",
+					"$",
+					"^",
+					"$",
+					"PARIS",
+					"HEIDE",
+					"theme",
+					"Skin",
+					"Theme"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": true,
+				"replace_history":
+				[
+					" >>2014-deductions.csv",
+					"cat 2014.csv | grep ",
+					"\""
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"folders":
+			[
+				{
+					"path": "/Users/jbenet/git/private-notes"
+				}
+			],
+			"groups":
+			[
+				{
+					"sheets":
+					[
+					]
+				}
+			],
+			"incremental_find":
+			{
+				"height": 27.0
+			},
+			"input":
+			{
+				"height": 0.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"pinned_build_system": "",
+			"position": "0 1 4 1279 773 0 0 1280 777 ",
+			"project": "",
+			"replace":
+			{
+				"height": 50.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+					[
+						"",
+						"fff≤"
+					]
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"selected_group": 0,
+			"settings":
+			{
+			},
+			"show_minimap": true,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 150.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			},
+			"window_id": 73,
+			"workspace_name": ""
+		}
+	],
+	"workspaces":
+	{
+		"recent_workspaces":
+		[
+		]
+	}
+}

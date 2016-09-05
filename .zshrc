@@ -65,7 +65,7 @@ if [[ -d "${HOME}/.zsh" ]] ; then
   done
 fi
 
-EDITOR=subl
+export EDITOR="subl -w"
 
 # Go
 export GOPATH=$HOME/go

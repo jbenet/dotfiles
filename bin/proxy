@@ -1,0 +1,47 @@
+#!/bin/sh
+
+host=erebor.benet.ai
+port=5901
+iface="Wi-Fi"
+
+usage() {
+  echo "usage: $0 [<host>] [<iface>]"
+  echo "turn socks proxy on or off"
+  exit 1
+}
+
+die() {
+  echo "error: $@"
+  exit 1
+}
+
+if [ $# -ge 1 ]; then
+  host="$1"
+fi
+
+if [ $# -ge 2 ]; then
+  iface="$2"
+fi
+
+# setup proxy
+echo "logging into $host"
+ssh -nND "$port" "$host" &
+sid="$!"
+
+kill -0 "$!" || die "failed to log into $host"
+
+cleanup() {
+  echo stopping
+  kill "$sid"
+  networksetup -setsocksfirewallproxystate "$iface" off; exit
+}
+
+trap cleanup SIGINT SIGTERM
+
+# use proxy
+echo "proxying all $iface http requests through $host"
+networksetup -setsocksfirewallproxy "$iface" "localhost" "$port"
+
+# wait forever
+echo "enter ^C to stop"
+tail -f /dev/null

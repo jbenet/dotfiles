@@ -1,3 +1,11 @@
+-- make sure you install lua:
+--    brew install lua
+--
+-- make sure you install these packages:
+--    luarocks install mjolnir.application
+--    luarocks install mjolnir.hotkey
+--    luarocks install mjolnir.bg.grid
+
 local application = require "mjolnir.application"
 local fnutils = require "mjolnir.fnutils"
 local hotkey = require "mjolnir.hotkey"

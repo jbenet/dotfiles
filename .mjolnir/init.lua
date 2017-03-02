@@ -22,7 +22,7 @@ local thirdW = grid.GRIDWIDTH / 3
 
 local resize = function(x, y, w, h)
   return function()
-    win = window.focusedwindow()
+    local win = window.focusedwindow()
     grid.set(win, {x=x, y=y, w=w, h=h}, win:screen())
   end
 end

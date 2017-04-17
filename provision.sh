@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # install homebrew
-ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+which brew || ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 
 # install commandline tools
 echo "Download the 'Commandline Tools for Xcode' from"

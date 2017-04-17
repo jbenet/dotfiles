@@ -27,7 +27,7 @@ local resize = function(x, y, w, h)
   end
 end
 
-local modifier = {"cmd", "alt", "shift"}
+local modifier = {"cmd", "shift"}
 
 -- full screen
 hotkey.bind(modifier, "space", grid.maximize_window)

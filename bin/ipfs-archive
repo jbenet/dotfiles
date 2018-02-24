@@ -1,0 +1,154 @@
+#!/bin/bash
+
+# exit on any error
+set -e
+
+# binary name, for usage
+bin="ipfs-archive"
+
+# set this to your default browser.
+# set to empty (browse="") to not open in browser.
+# in osx, you can use "open"
+browse="open"
+
+USAGE="Usage: $bin [<src-file-or-url>] [<dst-file-name>]
+       $bin - [<dst-file-name>]
+Archive files, urls, or stdin with ipfs."
+
+# use this ipfs api
+# this is an ipfs cluster for me :)
+ipfsApi="/ip4/127.0.0.1/tcp/9095"
+ipfsGwayLocal="http://127.0.0.1:8080"
+ipfsGwayGlobal="https://gateway.ipfs.io"
+
+# debug var
+debug=1
+
+usage() {
+  echo "$USAGE"
+  exit 0
+}
+
+die() {
+  echo >&2 "error: $@"
+  exit 1
+}
+
+ipfsIsRunning() {
+  ipfs --api "$ipfsApi" swarm peers >/dev/null 2>/dev/null
+  [ $? -eq 0 ]
+}
+
+isPath() {
+  [[ "$1" == *"/"* ]]
+}
+
+isAbsolutePath() {
+  isPath $1 && [[ "$1" =~ ^\/ ]]
+}
+
+# help option
+case "$1" in
+-h|--h|--help) usage ;;
+esac
+
+# check for dependencies
+type ipfs &>/dev/null || die "dependency not found: ipfs
+please install ipfs from https://ipfs.io/install"
+
+# check ipfs is running
+if ! ipfsIsRunning; then
+  die "no live ipfs api at $ipfsApi
+please check your ipfs node is running and correctly configured"
+fi
+
+# --------------
+
+# arguments
+stream=0
+url=0
+src="$1"
+dst="$2"
+
+# empty? error.
+if [ "$src" == "" ]; then
+  usage ;
+fi
+
+# dst is a path?
+if isPath $dst; then
+  die "destination '$dst' is a path. destination must be a filename."
+fi
+
+# --------------
+
+tdate=$(date +"%Y-%m-%dT%H:%M:%SZ")
+tmpdir=$(mktemp -d "/tmp/ipfs-archive.$tdate.XXXXXXXXXX")
+tmpfile="$tmpdir/tmpfile"
+
+# are we streaming? if so use temp file.
+if [ "$src" == "-" ]; then
+  stream=1
+
+  echo >&2 "Awaiting input data from stdin (stream mode)..."
+  echo >&2 "If you meant to convert a file, use: $bin <src-file-or-url> [<dst-file-name>]"
+  cat - >"$tmpfile"
+
+# is it a URL? if so use temp file.
+elif [[ "$src" =~ ^https?:\/\/ ]]; then
+  url=1
+
+  echo >&2 "Downloading url: $src"
+  echo >&2 "If you meant to convert a file, make sure the file does not begin with 'https?://'"
+
+  # -s = silent
+  # -L = follow redirects
+  curl -s -L "$src" >"$tmpfile"
+
+# not a stream, not a url. a file!
+else
+  if ! isAbsolutePath "$src"; then
+    src=$(pwd)"/$src"
+  fi
+
+  # go-ipfs cannot use symlinks... lolwut!?
+  ln $src "$tmpfile"
+
+  # if no destination, preserve filename.
+  if [ "$dst" == "" ]; then
+    dst=$(basename "$src")
+  fi
+fi
+
+# --------------
+
+addsrc="$tmpfile"
+
+# do we have a destination name?
+if [ "$dst" != "" ]; then
+  # move the tmpfile
+  mv "$tmpfile" "$tmpdir/$dst"
+  tmpfile="$tmpdir/$dst" # for cleanup
+
+  # add the directory instead, to preserve the filename.
+  addsrc="$tmpdir"
+fi
+
+# ok, now add to ipfs.
+printf "adding and pinning to ipfs ... "
+rootHash=$(ipfs --api "$ipfsApi" add -r -q "$addsrc" | tail -n 1)
+printf "$rootHash\n"
+
+# clean up safely
+rm "$tmpfile"
+rmdir "$tmpdir"
+
+# links!
+echo "local gateway: $ipfsGwayLocal/ipfs/$rootHash/$dst"
+echo "global gateway: $ipfsGwayGlobal/ipfs/$rootHash/$dst"
+
+# browse
+if [ "$browse" != "" ]; then
+  echo "opening in browser..."
+  $browse "$ipfsGwayGlobal/ipfs/$rootHash/$dst"
+fi

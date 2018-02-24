@@ -1,0 +1,68 @@
+#!/bin/sh
+
+
+USAGE="Usage: $0 [<in-svg>] [<out-pdf>]
+convert SVG files to PDF using inkscape."
+
+usage() {
+  echo "$USAGE"
+  exit 0
+}
+
+die() {
+  echo >&2 "error: $@"
+  exit 1
+}
+
+# help option
+case "$1" in
+-h|--h|--help) usage ;;
+esac
+
+# check for dependencies
+type inkscape &>/dev/null || die "dependency not found: inkscape
+It is contained in the package: ghostscript
+One of these may work for you:
+    brew install ghostscript
+    sudo apt-get install ghostscript"
+
+
+# arguments
+stream=0
+infile=$1
+outfile=$2
+
+# are we streaming? if so use temp files.
+if [ $# -eq 0 ]; then
+  date=$(date +"%Y-%m-%dT%H:%M:%SZ")
+  infile=$(mktemp "/tmp/compress-pdf.in.$date.XXXXXX.pdf")
+  outfile=$(mktemp "/tmp/compress-pdf.out.$date.XXXXXX.pdf")
+  stream=1
+
+  echo >&2 "Awaiting svg from stdin (stream mode)..."
+  echo >&2 "If you meant to convert a file, use: $0 <file>"
+  cat - >"$infile"
+fi
+
+# only one filename provided, default output filename.
+if [ $# -eq 1 ]; then
+  outfile=$(echo "$infile" | sed 's/\(.*\.\)\(svg\)/\1pdf/')
+fi
+
+# if file does not exist, show usage.
+if [ ! -f "$infile" ]; then
+  die "'$infile' does not exist or is not an svg file"
+fi
+
+# actually do the conversion now.
+inkscape --without-gui --export-area-drawing \
+  --file="$infile" --export-pdf="$outfile"
+
+# if streaming, output the outfile, then remove the tmp files
+if [ $stream -eq 1 ]; then
+  cat "$outfile"
+  rm "$infile"
+  rm "$outfile"
+else
+  echo "wrote $outfile"
+fi

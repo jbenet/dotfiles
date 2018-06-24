@@ -1,0 +1,51 @@
+#!/bin/sh
+
+usage() {
+  echo "usage: ipfs-push <ipfs-ref>"
+  echo "       push ref to friendly remotes"
+  exit 0
+}
+
+die() {
+  echo >&2 "error: $@"
+  exit 1
+}
+
+connect=(
+  "/ip4/138.68.249.25/tcp/4001/ipfs/QmQgns8w8PU9Thk4pZUyvH1PmeJiVp7DpVn8HqoZDZFvbV"
+)
+
+push=(
+  "http://localhost:8080"
+  "http://fornost:8080"
+  "https://ipfs.io"
+  "https://neptune.i.ipfs.io"
+  "https://saturn.i.ipfs.io"
+)
+
+maybePath=$1
+
+# resolve resolves through ipns names.
+path=$(ipfs resolve "$maybePath") || usage
+
+# first connect up.
+for remote in ${connect[*]}; do
+  echo "ipfs swarm connect $remote"
+  ipfs swarm connect "$remote" &
+done
+
+# then curl all the refs
+refsapi=/api/v0/refs?r=true&enc=text&arg=
+pullrefs() {
+  remote=$1
+  path=$2
+
+  echo "pulling $path from $remote"
+  wc=$(curl -s "$remote$refsapi$path" | wc -l | awk '{print $1}')
+  echo "pulled $path ($wc refs) from $remote"
+}
+
+for remote in ${push[*]}; do
+  pullrefs $remote $path &
+done
+wait

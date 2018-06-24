@@ -1,0 +1,106 @@
+#!/usr/bin/env bash
+
+# from https://gist.github.com/kenjisato/de8435e64041d421605ea22af617038a
+
+PACKAGE=$(basename $0)
+VERSION="0.0.0.9001"
+
+absolute_path () {
+  if [[ "$1" = /* ]]; then
+    echo ${1%/}
+  else
+    echo $(pwd)/${1%/}
+  fi
+}
+
+echo_help () {
+  echo "$PACKAGE - Export Keynote file to PDF/JPEG"
+  echo " "
+  echo "$PACKAGE [options] keynote_dir"
+  echo "options:"
+  echo "-h, --help                show brief help"
+  echo "-o, --output-dir=DIR      Output directory."
+  echo "-t, --type                pdf or jpeg"
+}
+
+die() {
+  echo &2< "error: $@"
+  exit 1
+}
+
+path_with_ext() {
+  p="$1"
+  e1="$2"
+
+  f1=$(basename -- "$p")
+  d=$(dirname -- "$p")
+
+  e2="${f1##*.}"
+  f2="${f1%.*}"
+  echo "$d/$f2.$e1"
+}
+
+while test $# -gt 0; do
+  case "$1" in
+    -h|--help)
+      echo_help
+      exit 0;;
+    -o|--output-dir*)
+      shift
+      OUTPUTDIR=$(absolute_path $1)
+      shift;;
+    -t|--type*)
+      shift
+      TYPE=$1
+      shift;;
+    *)
+      if [[ ! -z "$1" ]] && [[ ! "$1" =~ ^-+ ]]; then
+        files+=( "$1" )
+      fi
+      shift;;
+  esac
+done
+
+[[ -z "$TYPE" ]] && TYPE="pdf"
+
+if [[ ${#files[@]} = 0 ]]; then
+  die "no files specified"
+fi
+
+# The main loop
+# Call an applescript to do the conversion.
+
+ext="$TYPE"
+for file in "${files[@]}"; do
+  infile=$(absolute_path "$file")
+  outfile=$(path_with_ext "$infile" "$ext")
+
+  echo exporting "$infile" to "$outfile"
+  osascript - "$infile" "$outfile" "$ext" << EOF
+on run argv
+  set keynote_path to (item 1 of argv)
+  set out_path to (item 2 of argv)
+  set extension to (item 3 of argv)
+  set basename to name of (info for keynote_path)
+
+  tell application "Keynote"
+    set keynote_file to open (keynote_path as POSIX file)
+    if extension is equal to "pdf" then
+      export keynote_file to (out_path as POSIX file) as PDF with properties { PDF image quality: best }
+    else if extension is equal to "jpeg" then
+      export keynote_file to (basename as POSIX file) as slide images with properties { compression factor: 1.0, image format: JPEG }
+    else
+      do shell script "echo Output format " & extension & " not supported."
+    end
+    close keynote_file saving no
+  end tell
+end run
+EOF
+
+  if [[ "$ext" = "pdf" ]]; then
+    compress-pdf "$outfile"
+    rm "$outfile"
+  fi
+done
+
+exit 0

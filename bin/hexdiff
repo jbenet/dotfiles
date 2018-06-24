@@ -1,0 +1,9 @@
+#!/bin/sh
+
+t1=$(mktemp)
+t2=$(mktemp)
+
+hexdump -C "$1" >"$t1"
+hexdump -C "$2" >"$t2"
+diff "$t1" "$t2"
+rm "$t1" "$t2"

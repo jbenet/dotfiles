@@ -1,0 +1,99 @@
+#!/bin/sh
+
+USAGE="$0 [-v] [--paste] [<name>]"
+
+usage() {
+  echo "$USAGE"
+  echo "publish stdin (or pasteboard) to ipfs -- ENCRYPTED"
+  exit 0
+}
+
+die() {
+  echo >&2 "error: $@"
+  exit 1
+}
+
+log() {
+  if [ $verbose ]; then
+    printf >&2 "$@"
+  fi
+}
+
+# todo: make this cross-platform
+case $(uname) in
+Darwin)
+  clicopy="pbcopy"
+  clipaste="pbpaste"
+  ;;
+Linux)
+  if type xsel >/dev/null;
+  then
+    clicopy="xsel -i"
+    clipaste="xsel -o"
+  else
+    if type xclip >/dev/null;
+    then
+      clicopy="xclip -i"
+      clipaste="xclip -o"
+    else
+      die "xsel or xclip is needed on Linux"
+    fi
+  fi
+  ;;
+*) ;;
+esac
+
+# get user options
+while [ $# -gt 0 ]; do
+  # get options
+  arg="$1"
+  shift
+
+  case "$arg" in
+  -h|--help) usage ;;
+  -v|--verbose) verbose=1 ;;
+  --paste) paste=1 ;;
+  --*)
+    die "unrecognised option: '$arg'\n$USAGE" ;;
+  *)
+    if [ "$name" = "" ]; then
+      name="$arg"
+    else
+      die "too many arguments\n$USAGE"
+    fi
+    ;;
+  esac
+done
+
+
+if [ "$name" = "" ]; then
+  name=paste
+fi
+
+# prep a temp file
+date=$(date +"%Y-%m-%dT%H:%M:%SZ")
+fpath=$(mktemp "/tmp/paste.$date.XXXXXX.txt") ||
+  die "could not 'mktemp /tmp/paste.$date.XXXXXX.txt'"
+
+# get the content
+if [ $paste ]; then
+  test -n "$clipaste" || die "clipboard paste unkown for $(uname)"
+  $clipaste >"$fpath" || die "could not paste using '$clipaste'"
+else
+  cat - >"$fpath"
+fi
+
+# ipfs-senc the content
+sencout=$(ipfs-senc share "$fpath") || die "could not share with ipfs-senc"
+url=$(echo "$sencout" | grep "View on the web:" | awk '{print $5}')
+path=$(echo "$sencout" | grep "Shared as:" | awk '{print $3}')
+
+# clean up the old file
+rm "$fpath"
+
+# copy the url to clipboard
+echo "$url" | $clicopy || die "could not copy using '$clicopy'"
+echo "$out"
+
+# preload
+which ipfs-push >/dev/null && ipfs-push "$path" >/dev/null

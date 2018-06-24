@@ -153,3 +153,6 @@ if [ "$browse" != "" ]; then
   echo "opening in browser..."
   $browse "$ipfsGwayGlobal/ipfs/$rootHash/$dst"
 fi
+
+# ipfs-push
+which ipfs-push && (echo "pushing" && ipfs-push "$rootHash" >/dev/null)

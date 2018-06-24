@@ -1,0 +1,22 @@
+#!/bin/sh
+
+usage() {
+  echo "usage: $0 <ipfs-path-to-shae>"
+  echo "       run ipfs-senc and ipfs-push, copy the weblink to clipboard"
+  exit 0
+}
+
+[ $# -eq 1 ] || usage
+
+echo "> ipfs-senc share \"$1\""
+sencout=$(ipfs-senc share "$1")
+echo "$sencout"
+
+url=$(echo "$sencout" | grep "View on the web:" | awk '{print $5}')
+echo "> echo \"$url\" | pbcopy"
+echo "$url" | pbcopy
+afplay /System/Library/Sounds/Ping.aiff
+
+path=$(echo "$sencout" | grep "Shared as:" | awk '{print $3}')
+echo "> ipfs-push \"$path\""
+ipfs-push "$path"

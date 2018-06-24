@@ -17,7 +17,8 @@ Archive files, urls, or stdin with ipfs."
 
 # use this ipfs api
 # this is an ipfs cluster for me :)
-ipfsApi="/ip4/127.0.0.1/tcp/9095"
+# ipfsApi="/ip4/127.0.0.1/tcp/9095"
+ipfsApi="/ip4/127.0.0.1/tcp/5001"
 ipfsGwayLocal="http://127.0.0.1:8080"
 ipfsGwayGlobal="https://gateway.ipfs.io"
 
